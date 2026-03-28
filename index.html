@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DMAST - Desarrollo de software a medida</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --primary: #2563eb;
+      --muted: #6b7280;
+      --border: #dbe9ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80") center/cover no-repeat;
+      margin: 0;
+      color: #ffffff;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.75) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f8fafc;
+      text-shadow: 0 5px 15px rgba(15, 23, 42, 0.6);
+    }
+
+    .hero .hero-title {
+      margin: 0.5rem 0 0;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      color: #e2e8f0;
+      font-weight: 600;
+      text-shadow: 0 3px 10px rgba(15, 23, 42, 0.55);
+      text-transform: none;
+    }
+
+    .hero p {
+      margin: 1rem auto 0;
+      max-width: 780px;
+      color: #e2e8f0;
+      font-size: 1.1rem;
+    }
+
+    .contact {
+      width: min(95%, 1200px);
+      max-width: 1200px;
+      margin: 2rem auto 2.5rem;
+      background: var(--card);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 2.4rem 1.8rem;
+      box-shadow: 0 14px 24px rgba(15, 23, 42, 0.1);
+    }
+
+    .contact h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #111827;
+    }
+
+    .contact label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.78rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .contact button {
+      background: var(--primary);
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .contact button:hover {
+      background: #1d4ed8;
+    }
+
+    .projects {
+      background: #f8fafc;
+      padding: 2.5rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .projects h2 {
+      margin: 0 0 1.25rem;
+      color: #1e293b;
+      text-align: center;
+      font-size: clamp(1.7rem, 2.3vw, 2.3rem);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.2rem;
+    }
+
+    .card {
+      border: 1px solid #dbe7f2;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card h3 {
+      margin: 0;
+      padding: 0.85rem;
+      font-size: 1.05rem;
+      color: #0f172a;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="titulo-dmast">
+      <div class="hero-content">
+        <h1 id="titulo-dmast">DMAST</h1>
+        <p class="hero-title">Development, management and Systems Technology</p>
+        <p>Soluciones de software a medida. Creamos experiencia digital inteligente desde el análisis hasta la entrega final.</p>
+      </div>
+    </section>
+
+    <section class="projects" aria-labelledby="proyectos-titulo">
+      <div class="container">
+        <h2 id="proyectos-titulo">Proyectos realizados</h2>
+        <div class="projects-grid">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Proyecto 1" />
+            <h3>Gestion de Inventario Tienda Ponce</h3>
+          </article>
+          <article class="card">
+            <img src="/assets/pediatra.jpeg" alt="Proyecto 2" />
+            <h3>Gestion de Expedientes clinicos</h3>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Proyecto 3 - plataforma web" />
+            <h3>Gestion de Turnos en oficina Gubernamental</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" aria-labelledby="contacto-titulo">
+      <h2 id="contacto-titulo">Contactar a DMAST</h2>
+      <form id="contacto-form">
+        <label for="emailPhone">Correo o teléfono</label>
+        <input type="text" id="emailPhone" name="emailPhone" required placeholder="ej. correo@dominio.com o +123456789" />
+
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" rows="6" required placeholder="Escribe aquí tu consulta o requerimiento"></textarea>
+
+        <button type="submit">Enviar mensaje</button>
+      </form>
+      <p id="feedback" style="margin-top: 0.75rem; color: #065f46; display: none;"></p>
+    </section>
+    <p class="footer">Landing creada para DMAST - sección de presentación y contacto.</p>
+  </main>
+
+  <script>
+    document.getElementById('contacto-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const emailPhone = document.getElementById('emailPhone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!emailPhone || !message) {
+        alert('Por favor completa todos los campos.');
+        return;
+      }
+
+      const payload = {
+        contact: emailPhone,
+        message: message,
+        submittedAt: new Date().toISOString(),
+      };
+
+      // Aquí se hace el envío al endpoint interno (simulado con console.log)
+      console.log('Enviar payload a endpoint:', payload);
+
+      // Descomenta y adapta para uso real:
+      // fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(payload)
+      // })
+      //   .then(r => r.json())
+      //   .then(data => { ... })
+      //   .catch(err => { ... });
+
+      const feedback = document.getElementById('feedback');
+      feedback.textContent = 'Gracias, tu mensaje ha sido procesado. Pronto nos contactaremos contigo.';
+      feedback.style.display = 'block';
+
+      this.reset();
+    });
+  </script>
+</body>
+</html>
